@@ -2,26 +2,26 @@ const User = require("../models/user");
 const nodemailer = require("nodemailer");
 
 // تسجيل المستخدم
-const registerUser = async (req, res) => {
-  try {
-    const { name, age, mobile, email, paymentMethod } = req.body;
+// const registerUser = async (req, res) => {
+//   try {
+//     const { name, age, mobile, email, paymentMethod } = req.body;
 
-    const userExists = await User.findOne({ $or: [{ email }, { mobile }] });
-    if (userExists) {
-      return res
-        .status(400)
-        .json({ message: "Email or Mobile already exists" });
-    }
+//     const userExists = await User.findOne({ $or: [{ email }, { mobile }] });
+//     if (userExists) {
+//       return res
+//         .status(400)
+//         .json({ message: "Email or Mobile already exists" });
+//     }
 
-    const user = new User({ name, age, mobile, email, paymentMethod });
-    await user.save();
+//     const user = new User({ name, age, mobile, email, paymentMethod });
+//     await user.save();
 
-    sendEmail(user);
-    res.status(201).json({ message: "User registered and email sent" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+//     sendEmail(req, res);
+//     res.status(201).json({ message: "User registered and email sent" });
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 
 const getUsers = async (req, res) => {
   try {
@@ -32,24 +32,13 @@ const getUsers = async (req, res) => {
   }
 };
 
-const sendEmail = async (req, res) => {
+const sendEmail = async (user, res) => {
   try {
-    const { name, email, mobile, age, paymentMethod } = req.body;
-
-    // Validate that all required fields are provided
+    const { name, email, mobile, age, paymentMethod } = user;
     if (!name || !email || !mobile || !age || !paymentMethod) {
-      return res.status(400).json({ message: "All fields are required" });
+      return res.status(400).json({ message: "Missing required fields" });
     }
 
-    // تحقق من وجود المستخدم في قاعدة البيانات
-    const user = await User.findOne({ email });
-
-    if (!user) {
-      // إذا لم يتم العثور على المستخدم، أرسل رسالة تفيد بذلك
-      return res.status(404).json({ message: "User is not registered" });
-    }
-
-    // Configure email service
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -58,7 +47,6 @@ const sendEmail = async (req, res) => {
       },
     });
 
-    // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
@@ -78,13 +66,40 @@ const sendEmail = async (req, res) => {
       `,
     };
 
-    // Send the email
+    // Send email
     await transporter.sendMail(mailOptions);
+
+    // Send success response
     res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error sending email", error: error.message });
+    console.error("Error sending email:", error);
+    // Send error response only once
+    if (!res.headersSent) {
+      res
+        .status(500)
+        .json({ message: "Error sending email", error: error.message });
+    }
+  }
+};
+
+const registerUser = async (req, res) => {
+  try {
+    const { name, age, mobile, email, paymentMethod } = req.body;
+
+    const userExists = await User.findOne({ $or: [{ email }, { mobile }] });
+    if (userExists) {
+      return res
+        .status(400)
+        .json({ message: "Email or Mobile already exists" });
+    }
+
+    const user = new User({ name, age, mobile, email, paymentMethod });
+    await user.save();
+
+    sendEmail(user, res); 
+    res.status(201).json({ message: "User registered and email sent" }); // Do not send res after calling sendEmail
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
