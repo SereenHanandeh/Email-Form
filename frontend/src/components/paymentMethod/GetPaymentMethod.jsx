@@ -26,7 +26,6 @@ const GetPaymentMethods = ({ onSelect }) => {
         <p>Loading payment methods...</p>
       ) : (
         <ul>
-          {/* اضافة key و onClick لاختيار طريقة الدفع */}
           {paymentMethods.map((method) => (
             <li key={method._id} onClick={() => onSelect(method.method)}>
               {method.method}

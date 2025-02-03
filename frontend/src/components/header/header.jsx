@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // استيراد Link من react-router-dom
 
 const Header = () => {
   return (
@@ -7,13 +8,16 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <Link to="/">Home</Link> 
           </li>
           <li>
-            <a href="#">About</a>
+            <Link to="/user-form">Register</Link> 
           </li>
           <li>
-            <a href="#">Contact</a>
+            <Link to="/about">About</Link> 
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link> 
           </li>
         </ul>
       </nav>

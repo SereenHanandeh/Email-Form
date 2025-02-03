@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import RegisterUser from "./RegisterUser";
-import SendEmail from "./SendEmail";
-import GetPaymentMethods from "./GetPaymentMethod";
-import PaymentModal from "./PaymentModel";
+import SendEmail from "../sendEmail/SendEmail";
+import GetPaymentMethods from "../paymentMethod/GetPaymentMethod";
+import PaymentModal from "../paymentMethod/PaymentModel";
 
 const UserForm = () => {
   const [formData, setFormData] = useState({
@@ -22,8 +22,8 @@ const UserForm = () => {
 
   // هذه الدالة لتحديث اختيار طريقة الدفع
   const handlePaymentSelection = (method) => {
-    setFormData((prev) => ({ ...prev, paymentMethod: method })); // تحديث طريقة الدفع
-    setShowModal(false); // إغلاق الـ modal بعد الاختيار
+    setFormData((prev) => ({ ...prev, paymentMethod: method }));
+    setShowModal(false);
   };
 
   return (
@@ -58,15 +58,12 @@ const UserForm = () => {
         required
       />
 
-      {/* زر لاختيار طريقة الدفع */}
       <button onClick={() => setShowModal(true)}>Choose Payment Method</button>
 
-      {/* عرض الـ modal عند النقر */}
       <PaymentModal show={showModal} onHide={() => setShowModal(false)}>
         <GetPaymentMethods onSelect={handlePaymentSelection} />
       </PaymentModal>
 
-      {/* إرسال بيانات المستخدم بعد اختيار طريقة الدفع */}
       <RegisterUser
         userData={formData}
         onSuccess={() => setMessage("User registered successfully!")}
