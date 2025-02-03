@@ -1,7 +1,7 @@
-// src/components/AboutPage.jsx
 import React from "react";
+import "./about.css";
 
-const About= () => {
+const About = () => {
   return (
     <div className="about-container">
       <h1>About Our Service</h1>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./registerUser.css"; // استيراد ملف التصميم
 
 const RegisterUser = ({ userData, onSuccess, onError }) => {
   const [loading, setLoading] = useState(false);
@@ -19,8 +20,13 @@ const RegisterUser = ({ userData, onSuccess, onError }) => {
   };
 
   return (
-    <button onClick={handleRegister} disabled={loading}>
-      {loading ? "Registering..." : "Register"}
+    <button
+      id="register-button"
+      className={loading ? "loading" : ""}
+      onClick={handleRegister}
+      disabled={loading}
+    >
+      {loading ? <div className="spinner"></div> : "Register"}
     </button>
   );
 };

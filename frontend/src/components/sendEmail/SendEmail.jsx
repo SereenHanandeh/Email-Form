@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./sendEmail.css";
 
 const SendEmail = ({ formData, onSuccess, onError }) => {
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,11 @@ const SendEmail = ({ formData, onSuccess, onError }) => {
   };
 
   return (
-    <button onClick={handleSendEmail} disabled={loading}>
+    <button
+      onClick={handleSendEmail}
+      className="send-email-button"
+      disabled={loading}
+    >
       {loading ? "Sending..." : "Send Email"}
     </button>
   );

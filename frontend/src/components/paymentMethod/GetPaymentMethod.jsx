@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./getMethod.css"
 
 const GetPaymentMethods = ({ onSelect }) => {
   const [paymentMethods, setPaymentMethods] = useState([]);
@@ -21,11 +22,12 @@ const GetPaymentMethods = ({ onSelect }) => {
   }, []);
 
   return (
-    <div>
+    <div >
+      
       {loading ? (
-        <p>Loading payment methods...</p>
+        <p className="loader">Loading payment methods...</p>
       ) : (
-        <ul>
+        <ul className="payment-list">
           {paymentMethods.map((method) => (
             <li key={method._id} onClick={() => onSelect(method.method)}>
               {method.method}

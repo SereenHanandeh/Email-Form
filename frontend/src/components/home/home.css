@@ -1,41 +1,65 @@
+/* إعدادات الخطوط */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* حاوية الصفحة */
 .home-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: center; /* جعل المحتوى يبدأ من الأعلى */
-  min-height: 100vh;
+  background: linear-gradient(135deg, #a32b2bcc, #7a0505cc);
+  color: white;
   text-align: center;
-  font-family: Arial, sans-serif;
-  padding: 0 20px;
-  box-sizing: border-box;
-  width: 100%;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* العنوان الرئيسي */
 .heading {
   font-size: 3rem;
   font-weight: bold;
-  color: #fff;
   margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
 }
 
+/* وصف الصفحة */
 .description {
   font-size: 1.2rem;
-  color: #f8f8f8;
+  line-height: 1.6;
   margin-bottom: 30px;
+  color: #f5f5f5;
+  font-weight: 300;
   max-width: 600px;
 }
 
+/* الزر */
 .btn {
-  background-color: #da2f2f;
+  background: linear-gradient(135deg, #8e1f1f, #5e0101);
   color: white;
-  padding: 10px 20px;
-  font-size: 1rem;
+  padding: 15px 30px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.3s;
 }
 
+/* تأثيرات الزر عند التمرير */
 .btn:hover {
-  background-color: #e05c5c;
+  background: linear-gradient(135deg, #c93c3c, #ff0505);
+  transform: scale(1.05);
+}
+
+.btn:active {
+  transform: scale(1);
 }

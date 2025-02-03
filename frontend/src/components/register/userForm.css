@@ -1,0 +1,71 @@
+#form-container {
+  width: 500px;
+  padding: 20px;
+  background: linear-gradient(135deg, #201414a1, #3f010194);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: white;
+  font-family: "Arial", sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#form-title {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#user-name,
+#user-age,
+#user-mobile,
+#user-email {
+  width: 450px;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  outline: none;
+}
+
+#user-name::placeholder,
+#user-age::placeholder,
+#user-mobile::placeholder,
+#user-email::placeholder {
+  color: rgba(255, 255, 255, 0.356);
+}
+
+#payment-button {
+  background: linear-gradient(90deg, #ff4d4d, #b30000);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto;
+}
+
+#payment-button:hover {
+  background: linear-gradient(90deg, #b30000, #ff4d4d);
+  transform: scale(1.05);
+}
+
+#message {
+  margin-top: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 5px;
+}

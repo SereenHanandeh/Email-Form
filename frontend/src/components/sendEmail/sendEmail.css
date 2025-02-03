@@ -1,0 +1,31 @@
+.send-email-button {
+  background: linear-gradient(90deg, #ff4d4d, #b30000);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto;
+}
+
+.send-email-button:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+}
+
+.send-email-button:hover {
+  background: linear-gradient(90deg, #b30000, #ff4d4d);
+  transform: scale(1.05);
+}
+
+.send-email-button:active {
+  transform: scale(1);
+}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com"; 
+import emailjs from "emailjs-com";
+import "./contact.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,13 +21,13 @@ const Contact = () => {
     // Using EmailJS to send the email
     emailjs
       .send(
-        "service_oldtuy6", 
-        "template_0jlo6rq", 
+        "service_oldtuy6",
+        "template_0jlo6rq",
         {
           ...formData,
-          reply_to: formData.email, 
+          reply_to: formData.email,
         },
-        "v7TtNqC5rTLo8UkY3" 
+        "v7TtNqC5rTLo8UkY3"
       )
       .then(
         (response) => {

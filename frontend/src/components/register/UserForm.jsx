@@ -3,6 +3,7 @@ import RegisterUser from "./RegisterUser";
 import SendEmail from "../sendEmail/SendEmail";
 import GetPaymentMethods from "../paymentMethod/GetPaymentMethod";
 import PaymentModal from "../paymentMethod/PaymentModel";
+import "./userForm.css";
 
 const UserForm = () => {
   const [formData, setFormData] = useState({
@@ -12,25 +13,25 @@ const UserForm = () => {
     email: "",
     paymentMethod: "",
   });
-  const [showModal, setShowModal] = useState(false); // للتحكم في ظهور الـ modal
-  const [message, setMessage] = useState(""); // لتخزين الرسائل (مثل النجاح أو الفشل)
+  const [showModal, setShowModal] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // هذه الدالة لتحديث اختيار طريقة الدفع
   const handlePaymentSelection = (method) => {
     setFormData((prev) => ({ ...prev, paymentMethod: method }));
     setShowModal(false);
   };
 
   return (
-    <div className="form-container">
-      <h2>Register</h2>
+    <div id="form-container">
+      <h2 id="form-title">Register</h2>
       <input
         type="text"
+        id="user-name"
         name="name"
         placeholder="Name"
         onChange={handleChange}
@@ -38,6 +39,7 @@ const UserForm = () => {
       />
       <input
         type="number"
+        id="user-age"
         name="age"
         placeholder="Age"
         onChange={handleChange}
@@ -45,6 +47,7 @@ const UserForm = () => {
       />
       <input
         type="text"
+        id="user-mobile"
         name="mobile"
         placeholder="Mobile"
         onChange={handleChange}
@@ -52,13 +55,16 @@ const UserForm = () => {
       />
       <input
         type="email"
+        id="user-email"
         name="email"
         placeholder="Email"
         onChange={handleChange}
         required
       />
 
-      <button onClick={() => setShowModal(true)}>Choose Payment Method</button>
+      <button id="payment-button" onClick={() => setShowModal(true)}>
+        Choose Payment Method
+      </button>
 
       <PaymentModal show={showModal} onHide={() => setShowModal(false)}>
         <GetPaymentMethods onSelect={handlePaymentSelection} />
@@ -70,7 +76,6 @@ const UserForm = () => {
         onError={(error) => setMessage(error)}
       />
 
-      {/* إذا تم اختيار طريقة الدفع، يتم إرسال البريد الإلكتروني */}
       {formData.paymentMethod && (
         <SendEmail
           formData={formData}
@@ -79,8 +84,7 @@ const UserForm = () => {
         />
       )}
 
-      {/* عرض الرسالة عند النجاح أو الفشل */}
-      {message && <p>{message}</p>}
+      {message && <p id="message">{message}</p>}
     </div>
   );
 };
