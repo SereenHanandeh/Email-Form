@@ -41,6 +41,14 @@ const sendEmail = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
+    // تحقق من وجود المستخدم في قاعدة البيانات
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      // إذا لم يتم العثور على المستخدم، أرسل رسالة تفيد بذلك
+      return res.status(404).json({ message: "User is not registered" });
+    }
+
     // Configure email service
     const transporter = nodemailer.createTransport({
       service: "gmail",
