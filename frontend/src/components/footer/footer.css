@@ -1,0 +1,44 @@
+
+
+.main-container {
+  flex: 1;
+}
+
+.footer {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #030303;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+  }
+
+.footer p {
+  font-size: 1rem;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.footer a {
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #da2f2f;
+}
+
+.footer .footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer .footer-content p {
+  margin-right: 10px;
+}

@@ -1,0 +1,41 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* جعل المحتوى يبدأ من الأعلى */
+  min-height: 100vh;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.heading {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #f8f8f8;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+.btn {
+  background-color: #da2f2f;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #e05c5c;
+}
