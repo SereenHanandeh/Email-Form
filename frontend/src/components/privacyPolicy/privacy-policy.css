@@ -1,0 +1,95 @@
+body {
+  padding-top: 70px; /* ارتفاع الهيدر + مسافة إضافية */
+}
+
+.privacy-policy-container {
+    background: var(--contact-bg);
+    color: white;
+    padding: 50px;
+    max-width: 900px;
+    min-height: 100vh;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 70px; }
+  
+
+/* العناوين */
+.privacy-policy-container h1 {
+  background: linear-gradient(90deg, #b30000, #ff4d4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 280px;
+}
+
+.privacy-policy-container h2 {
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-top: 25px;
+  border-left: 5px solid #b30000;
+  padding-left: 10px;
+}
+
+.privacy-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin: 5px 0;
+  height: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-left: 5px solid #ff4d4d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.privacy-section:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* النصوص */
+.privacy-policy-container p {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+.privacy-policy-container h1,
+.privacy-policy-container h2 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.privacy-policy-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff4d4d;
+}
+
+.privacy-policy-container h2 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  color: #ff6666;
+}
+
+.back-home {
+  display: block;
+  text-align: center;
+  margin-bottom: 255px;
+  padding: 10px 23px;
+  background: linear-gradient(90deg, #b30000, #ff4d4d);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  align-self: center;
+}
+
+.back-home:hover {
+  background: linear-gradient(90deg, #ff4d4d, #b30000);
+  transform: scale(1.05);
+}

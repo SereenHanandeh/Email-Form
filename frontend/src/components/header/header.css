@@ -5,12 +5,12 @@
   right: 0;
   background-color: #050505;
   color: white;
-  padding: 15px 30px;
+  padding: 10px 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  height: 50px;
+  height: 30px;
 }
 
 .nav-container {

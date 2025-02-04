@@ -6,6 +6,8 @@ import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Contact from "./components/contact/Contact";
+import PrivacyPolicy from "./components/privacyPolicy/PrivacyPolicy";
+
 import "./App.css";
 
 const App = () => {
@@ -29,6 +31,8 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/user-form" element={<UserForm />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
         </Routes>
       </main>
       <Footer />
