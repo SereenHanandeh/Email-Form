@@ -1,6 +1,21 @@
+:root {
+  --send-email-bg: linear-gradient(90deg, #ff4d4d, #b30000);
+  --send-email-hover: linear-gradient(90deg, #b30000, #ff6666);
+  --send-email-disabled: rgba(0, 0, 0, 0.2);
+  --send-email-text: white;
+}
+
+/* 🌙 الثيم المظلم */
+[data-theme="dark"] {
+  --send-email-bg: linear-gradient(90deg, #670000, #300000);
+  --send-email-hover: linear-gradient(90deg, #990000, #660000);
+  --send-email-disabled: rgba(255, 255, 255, 0.2);
+  --send-email-text: white;
+}
+
 .send-email-button {
-  background: linear-gradient(90deg, #ff4d4d, #b30000);
-  color: white;
+  background: var(--send-email-bg);
+  color: var(--send-email-text);
   padding: 12px 25px;
   border: none;
   border-radius: 8px;
@@ -17,12 +32,11 @@
 }
 
 .send-email-button:disabled {
-  background: rgba(255, 255, 255, 0.2);
-  cursor: not-allowed;
+  background: var(--send-email-disabled);  cursor: not-allowed;
 }
 
 .send-email-button:hover {
-  background: linear-gradient(90deg, #b30000, #ff4d4d);
+  background: var(--send-email-hover);
   transform: scale(1.05);
 }
 

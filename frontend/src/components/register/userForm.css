@@ -1,11 +1,11 @@
 #form-container {
   width: 500px;
   padding: 20px;
-  background: linear-gradient(135deg, #201414a1, #3f010194);
+  background: var(--form-bg);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
-  color: white;
+  color: var(--text-color);
   font-family: "Arial", sans-serif;
   position: fixed;
   top: 50%;
@@ -30,8 +30,8 @@
   border: none;
   border-radius: 5px;
   font-size: 1rem;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
+  background: var(--input-bg);
+  color: var(--text-color);
   outline: none;
 }
 
@@ -39,11 +39,11 @@
 #user-age::placeholder,
 #user-mobile::placeholder,
 #user-email::placeholder {
-  color: rgba(255, 255, 255, 0.356);
+  color: var(--placeholder-color);
 }
 
 #payment-button {
-  background: linear-gradient(90deg, #ff4d4d, #b30000);
+  background: var(--button-bg);
   color: white;
   padding: 12px 20px;
   border: none;
@@ -57,7 +57,7 @@
 }
 
 #payment-button:hover {
-  background: linear-gradient(90deg, #b30000, #ff4d4d);
+  background: var(--button-hover);
   transform: scale(1.05);
 }
 
@@ -84,7 +84,8 @@
 
 /* 🔹 تصميم الإشعار */
 .notification {
-  background: #fff;
+  background: var(--notification-bg);
+  color: var(--notification-text);
   padding: 12px 20px;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -110,13 +111,13 @@
 
 /* 🔹 إشعار النجاح */
 .notification.success {
-  border-left: 4px solid #28a745;
+  border-left: 4px solid var(--success-color);
   color: #28a745;
 }
 
 /* 🔹 إشعار الخطأ */
 .notification.error {
-  border-left: 4px solid #dc3545;
+  border-left: 4px solid var(--error-color);
   color: #dc3545;
 }
 

@@ -1,11 +1,12 @@
 body {
-  background-image: url("./assets/bg.png");
+  background-image: var(--bg-image);
   background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-size: cover;
   background-position: center;
+  color: var(--text-color);
 }
 html,
 body {
@@ -14,4 +15,72 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* الثيم الفاتح (Light Theme) */
+:root {
+  --bg-image: url("./assets/bgD.jpg");
+  --bg-color: #ffffff;
+  --text-color: #050505;
+  --header-bg: #ffffff;
+  --contact-bg: linear-gradient(135deg, #f8f9fa, #e3e3e3);
+  --form-bg: linear-gradient(135deg, #f8f9fa, #e3e3e3);
+  --input-bg: rgba(0, 0, 0, 0.1);
+  --placeholder-color: rgba(0, 0, 0, 0.5);
+  --button-bg: linear-gradient(90deg, #ff4d4d, #b30000);
+  --button-hover: linear-gradient(90deg, #b30000, #ff4d4d);
+  --button-text: white;
+  --notification-bg: #ffffff;
+  --notification-text: #333;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --button-disabled: linear-gradient(90deg, #b30000, #4d0000);
+  --button-shadow: rgba(0, 0, 0, 0.2);
+  --button-shadow-hover: rgba(0, 0, 0, 0.3);
+}
+
+/* الثيم المظلم (Dark Theme) */
+[data-theme="dark"] {
+  --bg-image: url("./assets/bg.png");
+
+  --bg-color: #121212;
+  --text-color: #f8f2f2;
+  --header-bg: #000000;
+  --contact-bg: linear-gradient(135deg, #201414a1, #3f010194);
+  --form-bg: linear-gradient(135deg, #201414a1, #3f010194);
+  --input-bg: rgba(255, 255, 255, 0.2);
+  --placeholder-color: rgba(255, 255, 255, 0.5);
+  --button-bg: linear-gradient(90deg, #b30000, #ff4d4d);
+  --button-hover: linear-gradient(90deg, #ff4d4d, #b30000);
+  --button-text: white;
+  --notification-bg: #333;
+  --message-bg: #333;
+  --notification-text: #ffffff;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --button-disabled: linear-gradient(90deg, #550000, #220000);
+  --button-shadow: rgba(255, 255, 255, 0.2);
+  --button-shadow-hover: rgba(255, 255, 255, 0.3);
+}
+
+/* تطبيق الألوان على الصفحة */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* تحديث تصميم الهيدر */
+.header {
+  background-color: var(--header-bg);
+  color: var(--text-color);
+}
+
+/* تحديث الروابط */
+.nav-list li a {
+  color: var(--text-color);
+}
+
+.nav-list li a:hover {
+  opacity: 0.7;
 }
