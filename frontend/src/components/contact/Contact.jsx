@@ -8,7 +8,8 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState(""); // To handle form submission status
+
+  const [notification, setNotification] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +19,6 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Using EmailJS to send the email
     emailjs
       .send(
         "service_oldtuy6",
@@ -30,16 +30,19 @@ const Contact = () => {
         "v7TtNqC5rTLo8UkY3"
       )
       .then(
-        (response) => {
-          console.log("SUCCESS:", response);
-          setStatus("Message sent successfully!");
-          setFormData({ name: "", email: "", message: "" }); // Clear form after submission
+        () => {
+          showNotification("✔ Message Send successfully", "success");
+          setFormData({ name: "", email: "", message: "" });
         },
-        (error) => {
-          console.log("FAILED:", error);
-          setStatus("Error sending message. Please try again.");
+        () => {
+          showNotification("❌ An error occurred, please try again", "error");
         }
       );
+  };
+
+  const showNotification = (message, type) => {
+    setNotification({ message, type });
+    setTimeout(() => setNotification(null), 3000); // Hide after 3s
   };
 
   return (
@@ -71,7 +74,12 @@ const Contact = () => {
         ></textarea>
         <button type="submit">Send Message</button>
       </form>
-      {status && <p>{status}</p>}
+
+      {notification && (
+        <div className={`notification ${notification.type}`}>
+          <span>{notification.message}</span>
+        </div>
+      )}
     </div>
   );
 };

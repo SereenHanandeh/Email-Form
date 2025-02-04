@@ -13,8 +13,9 @@ const UserForm = () => {
     email: "",
     paymentMethod: "",
   });
+
   const [showModal, setShowModal] = useState(false);
-  const [message, setMessage] = useState("");
+  const [notifications, setNotifications] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,6 +25,22 @@ const UserForm = () => {
   const handlePaymentSelection = (method) => {
     setFormData((prev) => ({ ...prev, paymentMethod: method }));
     setShowModal(false);
+  };
+  const showNotification = (message, type) => {
+    const id = Date.now();
+    setNotifications((prev) => [...prev, { id, message, type, hidden: false }]);
+
+    setTimeout(() => {
+      setNotifications((prev) =>
+        prev.map((notif) =>
+          notif.id === id ? { ...notif, hidden: true } : notif
+        )
+      );
+    }, 2500); // جعلها تبدأ في الاختفاء قبل إزالة العنصر
+
+    setTimeout(() => {
+      setNotifications((prev) => prev.filter((notif) => notif.id !== id));
+    }, 3000); // إزالة الإشعار بعد 3 ثوانٍ
   };
 
   return (
@@ -72,19 +89,30 @@ const UserForm = () => {
 
       <RegisterUser
         userData={formData}
-        onSuccess={() => setMessage("User registered successfully!")}
-        onError={(error) => setMessage(error)}
+        onSuccess={() =>
+          showNotification("✔ User registered successfully", "success")
+        }
+        onError={(error) => showNotification(error, "error")}
       />
 
       {formData.paymentMethod && (
         <SendEmail
           formData={formData}
-          onSuccess={() => setMessage("Email sent successfully!")}
-          onError={(error) => setMessage(error)}
+          onSuccess={() =>
+            showNotification("📧 Email sent successfully", "success")
+          }
+          onError={(error) => showNotification(error, "error")}
         />
       )}
 
-      {message && <p id="message">{message}</p>}
+      {/* 🔹 إشعارات التنبيهات */}
+      <div className="notifications-container">
+        {notifications.map((notif) => (
+          <div key={notif.id} className={`notification ${notif.type}`}>
+            <span>{notif.message}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
