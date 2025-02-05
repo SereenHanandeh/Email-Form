@@ -1,3 +1,4 @@
+/* 🔹 تنسيق الهيدر */
 .header {
   position: fixed;
   top: 0;
@@ -10,45 +11,45 @@
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  height: 30px;
+  height: 50px; /* زيادة الارتفاع قليلاً */
 }
 
+/* 🔹 تحسين ترتيب المحتوى */
 .nav-container {
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
+/* 🔹 تحسين تصميم الشعار */
 .logo-container {
   display: flex;
   align-items: center;
 }
 
 .logo {
-  width: 200px;
-  height: 50px;
+  width: 150px; /* تصغير الشعار على الشاشات الصغيرة */
+  height: auto;
   margin-right: 15px;
 }
 
+/* 🔹 تحسين العنوان */
 .header-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
-
-/* تنسيق القائمة العلوية */
+/* 🔹 تحسين القائمة العلوية */
 .nav-list {
   list-style-type: none;
   display: flex;
   align-items: center;
   margin: 0;
   padding: 0;
-  gap: 10PX;
+  gap: 10px;
 }
 
 .nav-list li {
   margin: 0 15px;
-  display: flex;
-  align-items: center;
 }
 
 .nav-list li a {
@@ -59,22 +60,82 @@
 }
 
 .nav-list li a:hover {
-  color: #f44336; /* تغيير اللون عند التمرير فوق الرابط */
+  color: #f44336; /* تغيير اللون عند التمرير */
 }
 
-.nav-list li:last-child {
-  margin-left: 10px; 
-}
-
+/* 🔹 زر تغيير الثيم */
 .theme-toggle {
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   transition: transform 0.3s ease;
-  margin-left: 5px; 
+  margin-left: 5px;
 }
 
 .theme-toggle:hover {
   transform: scale(1.2);
+}
+
+/* 🔹 تحسين التصميم للأجهزة اللوحية */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 15px;
+  }
+
+  .logo {
+    width: 120px;
+  }
+
+  .header-title {
+    font-size: 1.2rem;
+  }
+
+  .nav-list {
+    display: none; /* إخفاء القائمة العلوية في الأجهزة الصغيرة */
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background: #050505;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .nav-list.active {
+    display: flex; /* إظهار القائمة عند النقر */
+  }
+
+  .nav-list li {
+    margin: 10px 0;
+  }
+
+  .hamburger-menu {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+  }
+}
+
+/* 🔹 تحسين إضافي للهواتف الصغيرة */
+@media (max-width: 480px) {
+  .logo {
+    width: 100px;
+  }
+
+  .header-title {
+    font-size: 1rem;
+  }
+
+  .theme-toggle {
+    font-size: 1.2rem;
+  }
+
+  .hamburger-menu {
+    font-size: 1.8rem;
+  }
 }

@@ -1,7 +1,6 @@
 const User = require("../models/user");
 const nodemailer = require("nodemailer");
 
-
 const getUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -10,14 +9,59 @@ const getUsers = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+//---------------------------------------------------------------------------------------------------
 
-
-const sendEmail = async (user) => {
+const registerUser = async (req, res) => {
   try {
-    const { name, email, mobile, age, paymentMethod } = user;
-    
-    if (!name || !email || !mobile || !age || !paymentMethod) {
-      throw new Error("Missing required fields");
+    console.log("Received request body:", req.body); // لتتبع البيانات المستلمة
+
+    // التأكد من أن الطلب يحتوي على البيانات المطلوبة
+    const { name, age, mobile, email, paymentMethod } = req.body;
+    if (!name || !email || !mobile) {
+      return res
+        .status(400)
+        .json({ message: "Name, Email, and Mobile are required" });
+    }
+
+    // التحقق مما إذا كان المستخدم موجودًا بالفعل
+    const userExists = await User.findOne({ $or: [{ email }, { mobile }] });
+    if (userExists) {
+      return res
+        .status(400)
+        .json({ message: "Email or Mobile already exists" });
+    }
+
+    // حفظ المستخدم في قاعدة البيانات
+    const user = new User({ name, age, mobile, email, paymentMethod });
+    await user.save();
+
+    // إرسال البريد الإلكتروني
+    try {
+      await sendEmail(user); 
+      console.log("Email sent successfully");
+    } catch (emailError) {
+      console.error("Error sending email:", emailError);
+      // لا تقم بإرجاع استجابة هنا، بل استمر في إرجاع استجابة نجاح مع تنبيه المستخدم فقط
+    }
+
+    // إرجاع استجابة نجاح بعد تسجيل المستخدم
+    return res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    console.error("Error in registerUser:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
+//----------------------------------------------------------------------------------------
+const sendEmail = async (req, res) => {
+  const { name, email, mobile, age, paymentMethod } = req.body;
+
+  console.log("Received email:", email);
+  try {
+    // تحقق من وجود البريد الإلكتروني
+    if (!email) {
+      console.error("No recipient email provided");
+      return res.status(400).json({ message: "No recipient email provided" }); // إرسال استجابة فورية
     }
 
     const transporter = nodemailer.createTransport({
@@ -30,9 +74,9 @@ const sendEmail = async (user) => {
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: email,
+      to: email, // البريد الإلكتروني للمستلم
       subject: "Registration Confirmation & Payment Method",
-      html: `
+      html: ` 
         <h2>Hello ${name},</h2>
         <p>Your registration was successful!</p>
         <p><strong>Registered Details:</strong></p>
@@ -50,31 +94,16 @@ const sendEmail = async (user) => {
     // إرسال البريد الإلكتروني
     await transporter.sendMail(mailOptions);
 
-    return { success: true, message: "Email sent successfully" }; // نعيد نتيجة ناجحة
+    // إرسال استجابة نجاح بعد إرسال البريد الإلكتروني
+    return res.status(200).json({ message: "Email sent successfully!" });
   } catch (error) {
-    console.error("Error sending email:", error);
-    throw error; // نرمي الخطأ ليتم التعامل معه عند استدعاء الدالة
-  }
-};
-
-const registerUser = async (req, res) => {
-  try {
-    const { name, age, mobile, email, paymentMethod } = req.body;
-
-    const userExists = await User.findOne({ $or: [{ email }, { mobile }] });
-    if (userExists) {
+    // تأكد من عدم إرسال استجابة بعد حدوث الخطأ
+    if (!res.headersSent) {
+      console.error("Error sending email:", error);
       return res
-        .status(400)
-        .json({ message: "Email or Mobile already exists" });
+        .status(500)
+        .json({ message: "Error sending email", error: error.message });
     }
-
-    const user = new User({ name, age, mobile, email, paymentMethod });
-    await user.save();
-
-    sendEmail(user, res); 
-    res.status(201).json({ message: "User registered and email sent" }); // Do not send res after calling sendEmail
-  } catch (error) {
-    res.status(500).json({ message: error.message });
   }
 };
 

@@ -2,12 +2,13 @@
   flex: 1;
 }
 
+/* Footer ثابت أسفل الشاشة */
 .footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: var(--header-bg); 
+  background-color: var(--header-bg);
   color: var(--text-color);
   text-align: center;
   padding: 10px 0;
@@ -15,12 +16,14 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* تحسين تنسيق النصوص */
 .footer p {
   font-size: 1rem;
   margin: 0;
   letter-spacing: 0.5px;
 }
 
+/* تنسيق الروابط */
 .footer a {
   color: var(--text-color);
   text-decoration: none;
@@ -31,13 +34,52 @@
   color: #da2f2f;
 }
 
+/* جعل المحتوى أكثر ترتيبًا */
 .footer .footer-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* يضمن أن المحتوى لا يخرج عن الشاشة */
+  padding: 0 15px;
 }
 
+/* التأكد من أن النصوص لا تتكدس عند المساحات الصغيرة */
 .footer .footer-content p {
-  margin-right: 10px;
+  margin: 5px 10px;
+  text-align: center;
+}
+
+/* 🔹 تحسين التصميم على الأجهزة الصغيرة */
+@media (max-width: 768px) {
+  .footer {
+    padding: 8px 0;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+
+  .footer .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer .footer-content p {
+    margin: 5px 0;
+  }
+}
+
+/* 🔹 تحسين إضافي للهواتف الصغيرة */
+@media (max-width: 480px) {
+  .footer {
+    padding: 6px 0;
+  }
+
+  .footer p {
+    font-size: 0.85rem;
+  }
+
+  .footer a {
+    font-size: 0.9rem;
+  }
 }

@@ -1,23 +1,22 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
 
-const cors = require("cors");
+// تفعيل CORS
 app.use(cors());
 
-const bodyParser = require("body-parser");
-app.use(bodyParser.json());
+// استبدال bodyParser بـ express.json()
+app.use(express.json());
 
 // اتصال بقاعدة البيانات
 require("./models/db");
 
+// استيراد الراوترات
 const userRouter = require("./routes/user");
 const paymentRouter = require("./routes/payment");
 
-
-app.use(express.json());
-
-// استيراد الراوترات
 app.use("/users", userRouter);
 app.use("/payments", paymentRouter);
 

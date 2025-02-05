@@ -1,8 +1,8 @@
 /* إعدادات الخطوط */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
@@ -62,4 +62,48 @@ body {
 
 .btn:active {
   transform: scale(1);
+}
+
+/* 🔹 تحسينات التصميم للأجهزة اللوحية */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 30px;
+    border-radius: 10px;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    max-width: 500px;
+  }
+
+  .btn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+  }
+}
+
+/* 🔹 تحسينات التصميم للهواتف المحمولة */
+@media (max-width: 480px) {
+  .home-container {
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
 }

@@ -26,6 +26,7 @@ const UserForm = () => {
     setFormData((prev) => ({ ...prev, paymentMethod: method }));
     setShowModal(false);
   };
+
   const showNotification = (message, type) => {
     const id = Date.now();
     setNotifications((prev) => [...prev, { id, message, type, hidden: false }]);
@@ -36,11 +37,11 @@ const UserForm = () => {
           notif.id === id ? { ...notif, hidden: true } : notif
         )
       );
-    }, 2500); // جعلها تبدأ في الاختفاء قبل إزالة العنصر
+    }, 2500); // الإشعار سيختفي بعد 2.5 ثانية
 
     setTimeout(() => {
       setNotifications((prev) => prev.filter((notif) => notif.id !== id));
-    }, 3000); // إزالة الإشعار بعد 3 ثوانٍ
+    }, 3000); // حذف الإشعار بعد 3 ثوانٍ
   };
 
   return (
@@ -87,6 +88,7 @@ const UserForm = () => {
         <GetPaymentMethods onSelect={handlePaymentSelection} />
       </PaymentModal>
 
+      
       <RegisterUser
         userData={formData}
         onSuccess={() =>
@@ -104,6 +106,7 @@ const UserForm = () => {
           onError={(error) => showNotification(error, "error")}
         />
       )}
+   
 
       {/* 🔹 إشعارات التنبيهات */}
       <div className="notifications-container">

@@ -53,12 +53,15 @@
   transition: 0.3s;
   width: 100%;
   max-width: 200px;
-  margin: 20px auto;
+  margin: 10px auto;
+  height: 55px;
+  box-shadow: 0px 4px 10px var(--button-shadow);
 }
 
 #payment-button:hover {
   background: var(--button-hover);
   transform: scale(1.05);
+  box-shadow: 0px 6px 12px var(--button-shadow-hover);
 }
 
 #message {
@@ -70,14 +73,13 @@
   border-radius: 5px;
 }
 
-/* 🔹 حاوية الإشعارات لتكون ثابتة ولا تختفي */
 .notifications-container {
   position: fixed;
   top: 80px; /* تعديل حسب ارتفاع الـ header */
-  right: 20px;
+  left: 20px; /* تغيير الموقع إلى اليسار */
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* لجعل الإشعارات تظهر فوق بعضها على اليمين */
+  align-items: flex-start; /* لجعل الإشعارات تظهر فوق بعضها على اليسار */
   gap: 10px;
   z-index: 9999;
 }
@@ -106,7 +108,7 @@
 /* 🔹 تحسين الإشعار عند الاختفاء */
 .notification.hidden {
   opacity: 0;
-  transform: translateX(50px);
+  transform: translateX(-50px); /* حركه الإشعار بعيدًا عن الشاشة */
 }
 
 /* 🔹 إشعار النجاح */

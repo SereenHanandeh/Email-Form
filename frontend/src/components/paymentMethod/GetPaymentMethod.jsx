@@ -9,7 +9,10 @@ const GetPaymentMethods = ({ onSelect }) => {
   useEffect(() => {
     const fetchPaymentMethods = async () => {
       try {
+        console.log("Fetching payment methods...");
         const response = await axios.get("http://localhost:5000/payments");
+        console.log("Received payment methods:", response.data); 
+
         setPaymentMethods(response.data);
       } catch (error) {
         console.error("Error fetching payment methods:", error);

@@ -1,5 +1,4 @@
 :root {
-  --send-email-bg: linear-gradient(90deg, #ff4d4d, #b30000);
   --send-email-hover: linear-gradient(90deg, #b30000, #ff6666);
   --send-email-disabled: rgba(0, 0, 0, 0.2);
   --send-email-text: white;
@@ -7,14 +6,13 @@
 
 /* 🌙 الثيم المظلم */
 [data-theme="dark"] {
-  --send-email-bg: linear-gradient(90deg, #670000, #300000);
   --send-email-hover: linear-gradient(90deg, #990000, #660000);
   --send-email-disabled: rgba(255, 255, 255, 0.2);
   --send-email-text: white;
 }
 
 .send-email-button {
-  background: var(--send-email-bg);
+  background: var(--button-bg);
   color: var(--send-email-text);
   padding: 12px 25px;
   border: none;
@@ -28,11 +26,15 @@
   justify-content: center;
   width: 100%;
   max-width: 200px;
-  margin: 20px auto;
+  margin: 10px auto;
+  height: 55px;
+  box-shadow: 0px 6px 12px var(--button-shadow-hover);
+
 }
 
 .send-email-button:disabled {
-  background: var(--send-email-disabled);  cursor: not-allowed;
+  background: var(--send-email-disabled);
+  cursor: not-allowed;
 }
 
 .send-email-button:hover {
@@ -42,4 +44,73 @@
 
 .send-email-button:active {
   transform: scale(1);
+}
+
+/* حاوية الإشعار */
+.message-container {
+  position: fixed;
+  top: 20px; /* المسافة عن الأعلى */
+  left: 20px; /* تغيير الموقع إلى اليسار */
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 250px;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.message-container.hidden {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+/* تصميم إشعار النجاح */
+.message-container.success {
+  background-color: #28a745;
+}
+
+/* تصميم إشعار الخطأ */
+.message-container.error {
+  background-color: #dc3545;
+}
+
+/* ميديا كويري لتصغير الأزرار والإشعارات على الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .send-email-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    max-width: 150px;
+  }
+
+  .message-container {
+    min-width: 200px;
+    max-width: 300px;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* ميديا كويري لتحسين العرض على الهواتف الصغيرة */
+@media (max-width: 480px) {
+  .send-email-button {
+    padding: 8px 15px;
+    font-size: 12px;
+    max-width: 120px;
+  }
+
+  .message-container {
+    min-width: 180px;
+    max-width: 250px;
+    font-size: 12px;
+    padding: 8px;
+  }
 }

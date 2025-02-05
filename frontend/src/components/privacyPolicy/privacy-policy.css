@@ -3,18 +3,18 @@ body {
 }
 
 .privacy-policy-container {
-    background: var(--contact-bg);
-    color: white;
-    padding: 50px;
-    max-width: 900px;
-    min-height: 100vh;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 70px; }
-  
+  background: var(--contact-bg);
+  color: white;
+  padding: 50px;
+  max-width: 900px;
+  min-height: 100vh;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 70px;
+}
 
 /* العناوين */
 .privacy-policy-container h1 {
@@ -22,14 +22,14 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-top: 280px;
 }
 
 .privacy-policy-container h2 {
   color: var(--text-color);
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-top: 25px;
   border-left: 5px solid #b30000;
   padding-left: 10px;
@@ -56,22 +56,11 @@ body {
   font-size: 1rem;
   color: var(--text-color);
 }
+
 .privacy-policy-container h1,
 .privacy-policy-container h2 {
   text-align: center;
   font-weight: bold;
-}
-
-.privacy-policy-container h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #ff4d4d;
-}
-
-.privacy-policy-container h2 {
-  font-size: 1.5rem;
-  margin-top: 20px;
-  color: #ff6666;
 }
 
 .back-home {
@@ -92,4 +81,64 @@ body {
 .back-home:hover {
   background: linear-gradient(90deg, #ff4d4d, #b30000);
   transform: scale(1.05);
+}
+
+/* ✅ تحسينات للأجهزة اللوحية */
+@media (max-width: 768px) {
+  .privacy-policy-container {
+    padding: 30px;
+    max-width: 85%;
+  }
+
+  .privacy-policy-container h1 {
+    font-size: 1.8rem;
+    margin-top: 150px;
+  }
+
+  .privacy-policy-container h2 {
+    font-size: 1.2rem;
+    border-left: 4px solid #b30000;
+  }
+
+  .privacy-section {
+    height: auto;
+    padding: 15px;
+  }
+
+  .back-home {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+}
+
+/* ✅ تحسينات للهواتف المحمولة */
+@media (max-width: 480px) {
+  .privacy-policy-container {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  .privacy-policy-container h1 {
+    font-size: 1.5rem;
+    margin-top: 100px;
+  }
+
+  .privacy-policy-container h2 {
+    font-size: 1rem;
+    border-left: 3px solid #b30000;
+  }
+
+  .privacy-section {
+    height: auto;
+    padding: 10px;
+  }
+
+  .privacy-policy-container p {
+    font-size: 0.9rem;
+  }
+
+  .back-home {
+    font-size: 0.85rem;
+    padding: 7px 18px;
+  }
 }

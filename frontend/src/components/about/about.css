@@ -6,8 +6,7 @@ body {
   margin: 0;
   background-color: var(--bg-color);
   transition: background-color 0.3s ease;
-
-
+  padding: 20px;
 }
 
 .about-container {
@@ -21,23 +20,40 @@ body {
   width: 100%;
 }
 
-.about-container h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: var(--text-color);
-  text-transform: uppercase;
+.about-container p,
+.about-container .how-to-use {
+  text-align: left; /* محاذاة الفقرة والقائمة إلى اليمين */
+  direction: ltr; 
 }
 
-.about-container p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  color: var(--text-color);
-  font-family: "Arial", sans-serif;
+/* تحسين التصميم على الأجهزة الصغيرة */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 30px;
+    max-width: 90%;
+  }
+
+  .about-container h1 {
+    font-size: 2rem;
+  }
+
+  .about-container p {
+    font-size: 1rem;
+  }
 }
 
-.about-container p:hover {
-  color: var(--hover-color);
-  transition: color 0.3s;
+/* تحسين إضافي للشاشات الأصغر مثل الهواتف */
+@media (max-width: 480px) {
+  .about-container {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  .about-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .about-container p {
+    font-size: 0.9rem;
+  }
 }

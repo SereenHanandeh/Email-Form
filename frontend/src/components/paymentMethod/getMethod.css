@@ -10,6 +10,7 @@
   margin: auto;
 }
 
+/* قائمة الدفع */
 .payment-list {
   list-style: none;
   padding: 0;
@@ -30,7 +31,46 @@
   transform: scale(1.05);
 }
 
+/* تحسين للأجهزة اللوحية */
+@media (max-width: 768px) {
+  .payment-container {
+    width: 350px;
+    padding: 18px;
+  }
+
+  .payment-list li {
+    padding: 10px;
+    font-size: 1rem;
+  }
+}
+
+/* تحسين للهواتف المحمولة */
+@media (max-width: 480px) {
+  .payment-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .payment-list li {
+    padding: 8px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+  }
+
+  .payment-list li:hover {
+    transform: none; /* إزالة التكبير على الأجهزة التي تعمل باللمس */
+  }
+}
+
+/* تحسين عنصر التحميل */
 .loader {
   font-size: 18px;
   font-weight: bold;
+}
+
+/* تحسين حجم الخط على الأجهزة الصغيرة */
+@media (max-width: 480px) {
+  .loader {
+    font-size: 16px;
+  }
 }
