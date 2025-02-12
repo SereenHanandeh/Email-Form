@@ -20,5 +20,7 @@ const paymentRouter = require("./routes/payment");
 app.use("/users", userRouter);
 app.use("/payments", paymentRouter);
 
+app.use("*", (req, res) => res.status(404).json("No Contant At this Path"));
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
