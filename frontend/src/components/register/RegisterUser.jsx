@@ -9,7 +9,7 @@ const RegisterUser = ({ userData, onSuccess, onError }) => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5000/users/register",
+        "https://email-form-wkf3.onrender.com/users/register",
         userData
       );
       onSuccess(response.data);

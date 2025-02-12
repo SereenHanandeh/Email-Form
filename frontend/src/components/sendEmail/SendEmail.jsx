@@ -16,13 +16,13 @@ const SendEmail = ({ formData, onSuccess, onError }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/users/sendEmail",
+        "https://email-form-wkf3.onrender.com/users/sendEmail",
         formData
       );
       // setMessage("Email sent successfully!");
-      // setMessage(response.data.message); 
-// /      onSuccess(response.data);
-      // setShowNotification(true); 
+      // setMessage(response.data.message);
+      // /      onSuccess(response.data);
+      // setShowNotification(true);
     } catch (error) {
       setMessage(error.response?.data?.message || "Error sending email"); // رسالة الخطأ
       setMessageType("error");

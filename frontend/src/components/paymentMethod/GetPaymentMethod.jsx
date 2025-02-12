@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./getMethod.css"
+import "./getMethod.css";
 
 const GetPaymentMethods = ({ onSelect }) => {
   const [paymentMethods, setPaymentMethods] = useState([]);
@@ -10,8 +10,10 @@ const GetPaymentMethods = ({ onSelect }) => {
     const fetchPaymentMethods = async () => {
       try {
         console.log("Fetching payment methods...");
-        const response = await axios.get("http://localhost:5000/payments");
-        console.log("Received payment methods:", response.data); 
+        const response = await axios.get(
+          "https://email-form-wkf3.onrender.com/payments"
+        );
+        console.log("Received payment methods:", response.data);
 
         setPaymentMethods(response.data);
       } catch (error) {
@@ -25,8 +27,7 @@ const GetPaymentMethods = ({ onSelect }) => {
   }, []);
 
   return (
-    <div >
-      
+    <div>
       {loading ? (
         <p className="loader">Loading payment methods...</p>
       ) : (
