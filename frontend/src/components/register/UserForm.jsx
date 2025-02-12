@@ -71,15 +71,13 @@ const UserForm = () => {
     try {
       await RegisterUser({
         userData: formData,
-        onSuccess: () =>
-          showNotification("✔ User registered successfully", "success"),
+        onSuccess: () => showNotification("✔ User registered successfully", "success"),
         onError: (error) => showNotification(error, "error"),
       });
 
       await SendEmail({
         formData: formData,
-        onSuccess: () =>
-          showNotification("📧 Email sent successfully", "success"),
+        onSuccess: () => showNotification("📧 Email sent successfully", "success"),
         onError: (error) => showNotification(error, "error"),
       });
 
@@ -140,9 +138,7 @@ const UserForm = () => {
       <button
         id="payment-button"
         onClick={() => setShowModal(true)}
-        disabled={
-          !formData.name || !formData.age || !formData.mobile || !formData.email
-        }
+        disabled={!formData.name || !formData.age || !formData.mobile || !formData.email}
       >
         Choose Payment Method
       </button>
@@ -172,9 +168,7 @@ const UserForm = () => {
         {notifications.map((notif) => (
           <div
             key={notif.id}
-            className={`notification ${notif.type} ${
-              notif.hidden ? "hidden" : ""
-            }`}
+            className={`notification ${notif.type} ${notif.hidden ? "hidden" : ""}`}
           >
             <span>{notif.message}</span>
           </div>
