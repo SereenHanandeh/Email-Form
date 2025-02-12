@@ -11,7 +11,7 @@ import PrivacyPolicy from "./components/privacyPolicy/PrivacyPolicy";
 import "./App.css";
 
 const App = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
