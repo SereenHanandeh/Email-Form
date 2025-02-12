@@ -11,13 +11,16 @@
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  height: 50px; /* زيادة الارتفاع قليلاً */
+  height: 60px; /* زيادة الارتفاع قليلاً */
+  width: 100%;
+  transition: all 0.3s ease;
 }
 
 /* 🔹 تحسين ترتيب المحتوى */
 .nav-container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap; /* يسمح بانتقال العناصر عند الحاجة */
 }
 
 /* 🔹 تحسين تصميم الشعار */
@@ -45,11 +48,8 @@
   align-items: center;
   margin: 0;
   padding: 0;
-  gap: 10px;
-}
-
-.nav-list li {
-  margin: 0 15px;
+  gap: 15px;
+  transition: all 0.3s ease;
 }
 
 .nav-list li a {
@@ -57,6 +57,7 @@
   text-decoration: none;
   font-size: 1.1rem;
   transition: color 0.3s ease;
+  padding: 10px 15px;
 }
 
 .nav-list li a:hover {
@@ -70,14 +71,43 @@
   font-size: 1.5rem;
   cursor: pointer;
   transition: transform 0.3s ease;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .theme-toggle:hover {
   transform: scale(1.2);
 }
 
+/* 🔹 زر القائمة (hamburger) */
+.hamburger-menu {
+  display: none; /* إخفاؤه على الشاشات الكبيرة */
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
 /* 🔹 تحسين التصميم للأجهزة اللوحية */
+@media (max-width: 1024px) {
+  .logo {
+    width: 130px;
+  }
+
+  .header-title {
+    font-size: 1.2rem;
+  }
+
+  .nav-list {
+    gap: 10px;
+  }
+
+  .nav-list li a {
+    font-size: 1rem;
+  }
+}
+
+/* 🔹 تحسين التصميم للأجهزة الصغيرة */
 @media (max-width: 768px) {
   .header {
     padding: 10px 15px;
@@ -88,14 +118,14 @@
   }
 
   .header-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .nav-list {
     display: none; /* إخفاء القائمة العلوية في الأجهزة الصغيرة */
     flex-direction: column;
     position: absolute;
-    top: 50px;
+    top: 60px;
     left: 0;
     width: 100%;
     background: #050505;
@@ -108,16 +138,19 @@
   }
 
   .nav-list li {
-    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .nav-list li a {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
   }
 
   .hamburger-menu {
     display: block;
-    font-size: 2rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: white;
   }
 }
 
@@ -137,5 +170,10 @@
 
   .hamburger-menu {
     font-size: 1.8rem;
+  }
+
+  .nav-list li a {
+    font-size: 1rem;
+    padding: 12px;
   }
 }
