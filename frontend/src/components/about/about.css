@@ -18,19 +18,21 @@ body {
   text-align: center;
   max-width: 800px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* جعل المحتوى في المنتصف */
 }
 
 .about-container p,
 .about-container .how-to-use {
   text-align: left; /* محاذاة الفقرة والقائمة إلى اليمين */
-  direction: ltr; 
+  direction: ltr;
 }
 
-/* تحسين التصميم على الأجهزة الصغيرة */
 @media (max-width: 768px) {
   .about-container {
     padding: 30px;
-    max-width: 90%;
+    max-width: 85%; /* جعل العرض أكثر مرونة */
   }
 
   .about-container h1 {
@@ -39,10 +41,11 @@ body {
 
   .about-container p {
     font-size: 1rem;
+    text-align: center; /* جعل النص في المنتصف */
   }
 }
 
-/* تحسين إضافي للشاشات الأصغر مثل الهواتف */
+/* 🔹 تحسين التجاوب للهواتف */
 @media (max-width: 480px) {
   .about-container {
     padding: 20px;
@@ -55,5 +58,6 @@ body {
 
   .about-container p {
     font-size: 0.9rem;
+    text-align: center; /* محاذاة النص في المنتصف */
   }
 }

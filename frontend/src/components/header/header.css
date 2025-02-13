@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  height: 60px; /* زيادة الارتفاع قليلاً */
+  height: 60px;
   width: 100%;
   transition: all 0.3s ease;
 }
@@ -20,7 +20,7 @@
 .nav-container {
   display: flex;
   align-items: center;
-  flex-wrap: wrap; /* يسمح بانتقال العناصر عند الحاجة */
+  flex-wrap: wrap;
 }
 
 /* 🔹 تحسين تصميم الشعار */
@@ -30,7 +30,7 @@
 }
 
 .logo {
-  width: 150px; /* تصغير الشعار على الشاشات الصغيرة */
+  width: 150px;
   height: auto;
   margin-right: 15px;
 }
@@ -61,7 +61,7 @@
 }
 
 .nav-list li a:hover {
-  color: #f44336; /* تغيير اللون عند التمرير */
+  color: #f44336;
 }
 
 /* 🔹 زر تغيير الثيم */
@@ -78,7 +78,7 @@
   transform: scale(1.2);
 }
 
-/* 🔹 زر القائمة (hamburger) */
+/* 🔹 زر القائمة (hamburger) - تم نقله إلى الزاوية اليمنى */
 .hamburger-menu {
   display: none; /* إخفاؤه على الشاشات الكبيرة */
   font-size: 2rem;
@@ -86,28 +86,13 @@
   background: none;
   border: none;
   color: white;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 1100;
 }
 
-/* 🔹 تحسين التصميم للأجهزة اللوحية */
-@media (max-width: 1024px) {
-  .logo {
-    width: 130px;
-  }
-
-  .header-title {
-    font-size: 1.2rem;
-  }
-
-  .nav-list {
-    gap: 10px;
-  }
-
-  .nav-list li a {
-    font-size: 1rem;
-  }
-}
-
-/* 🔹 تحسين التصميم للأجهزة الصغيرة */
+/* 🔹 تحسين القائمة المنسدلة للهامبرجر */
 @media (max-width: 768px) {
   .header {
     padding: 10px 15px;
@@ -121,16 +106,19 @@
     font-size: 1.1rem;
   }
 
+  /* إخفاء القائمة العلوية على الشاشات الصغيرة */
   .nav-list {
-    display: none; /* إخفاء القائمة العلوية في الأجهزة الصغيرة */
+    display: none;
     flex-direction: column;
     position: absolute;
     top: 60px;
-    left: 0;
-    width: 100%;
-    background: #050505;
+    right: 0; /* جعل القائمة تظهر من الزاوية اليمنى */
+    width: 250px;
+    background: #111;
     padding: 10px 0;
     text-align: center;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
   .nav-list.active {
@@ -146,11 +134,13 @@
   .nav-list li a {
     display: block;
     width: 100%;
-    padding: 10px 20px;
+    padding: 12px 20px;
+    font-size: 1rem;
   }
 
   .hamburger-menu {
     display: block;
+    font-size: 2rem;
   }
 }
 
@@ -172,8 +162,12 @@
     font-size: 1.8rem;
   }
 
+  .nav-list {
+    width: 220px;
+  }
+
   .nav-list li a {
-    font-size: 1rem;
-    padding: 12px;
+    font-size: 0.95rem;
+    padding: 10px;
   }
 }

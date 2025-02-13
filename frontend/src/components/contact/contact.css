@@ -33,7 +33,31 @@ body {
   outline: none;
 }
 
-/* تحسين تصميم الإشعارات على الشاشات الصغيرة */
+/* 🔹 تحسين زر الإرسال */
+.sendbutton {
+  background: var(--button-bg);
+  color: var(--button-text);
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 10px var(--button-shadow);
+}
+
+.sendbutton:hover {
+  background: var(--button-hover);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px var(--button-shadow-hover);
+}
+
+/* 🔹 تحسين تصميم الإشعارات */
 .notification {
   position: fixed;
   top: 80px;
@@ -53,58 +77,23 @@ body {
   max-width: 90%;
 }
 
-.sendbutton{
-  background: var(--button-bg);
-  color: var(--button-text);
-  padding: 12px 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 200px;
-  margin: 5px auto;
-  text-transform: uppercase;
-  box-shadow: 0px 4px 10px var(--button-shadow);
-  position: relative;
-  overflow: hidden;
-  height: 55px;
-}
-
-.sendbutton:hover {
-  background: var(--button-hover);
-  transform: scale(1.05);
-  box-shadow: 0px 6px 12px var(--button-shadow-hover);
-}
-
-.sendbutton:disabled {
-  background: var(--button-disabled);
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-/* تحسين التصميم على الأجهزة الصغيرة */
+/* ✅ تحسينات للأجهزة اللوحية */
 @media (max-width: 768px) {
   .contact-container {
     padding: 30px;
-    max-width: 90%;
+    max-width: 85%;
   }
 
   .contact-container h1 {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   .contact-container input,
   .contact-container textarea {
-    max-width: 100%;
+    width: 100%;
   }
 
-  .contact-container button {
+  .sendbutton {
     max-width: 100%;
   }
 
@@ -117,7 +106,7 @@ body {
   }
 }
 
-/* تحسين إضافي للشاشات الأصغر مثل الهواتف */
+/* ✅ تحسينات إضافية للهواتف */
 @media (max-width: 480px) {
   .contact-container {
     padding: 20px;
@@ -125,11 +114,18 @@ body {
   }
 
   .contact-container h1 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
-  .contact-container p {
+  .contact-container input,
+  .contact-container textarea {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .sendbutton {
     font-size: 1rem;
+    padding: 12px;
   }
 
   .notification {
@@ -138,3 +134,11 @@ body {
     max-width: 95%;
   }
 }
+
+
+.sendbutton:disabled {
+  background: var(--button-disabled);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+

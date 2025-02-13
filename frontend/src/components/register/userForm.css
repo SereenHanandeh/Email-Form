@@ -1,5 +1,7 @@
 #form-container {
-  width: 500px;
+  width: 40vw; /* اجعل العرض ديناميكيًا بناءً على حجم الشاشة */
+  max-width: 500px; /* الحد الأقصى للعرض */
+  min-width: 320px; /* الحد الأدنى للعرض لمنع صغر النموذج جدًا */
   padding: 20px;
   background: var(--form-bg);
   border-radius: 10px;
@@ -7,25 +9,22 @@
   text-align: center;
   color: var(--text-color);
   font-family: "Arial", sans-serif;
-  position: fixed;
+
+  /* تمركز النموذج دائمًا في وسط الصفحة */
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-#form-title {
-  margin-bottom: 15px;
-  font-size: 1.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
+/* 🌍 تحسين المدخلات ليتم تصغيرها أو تكبيرها تلقائيًا */
 #user-name,
 #user-age,
 #user-mobile,
 #user-email {
-  width: 450px;
-  padding: 10px;
+  width: 90%; /* جعل المدخلات تستجيب لحجم الحاوية */
+  max-width: 450px;
+  padding: 12px;
   margin: 10px 0;
   border: none;
   border-radius: 5px;
@@ -33,6 +32,13 @@
   background: var(--input-bg);
   color: var(--text-color);
   outline: none;
+}
+
+#form-title {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 #user-name::placeholder,
@@ -147,47 +153,72 @@
     width: 0%;
   }
 }
-@media (max-width: 768px) {
+
+@media (max-width: 1024px) {
   #form-container {
-    width: 90%; /* تقليل العرض ليكون مناسبًا للشاشات الصغيرة */
-    padding: 15px;
-  }
-
-  #user-name,
-  #user-age,
-  #user-mobile,
-  #user-email {
-    width: 100%; /* جعل المدخلات تأخذ العرض الكامل */
-    font-size: 0.9rem; /* تقليل حجم الخط */
-  }
-
-  #payment-button {
-    width: 100%; /* توسيع زر الدفع */
-    max-width: 100%;
+    width: 50vw;
+    max-width: 450px;
+    padding: 18px;
   }
 }
 
-@media (max-width: 480px) {
+/* 📱 تحسين التصميم للأجهزة المتوسطة (تابلت وهواتف كبيرة) */
+@media (max-width: 768px) {
   #form-container {
-    width: 95%; /* توسيع النموذج أكثر للشاشات الأصغر */
-    padding: 10px;
-  }
-
-  #form-title {
-    font-size: 1.5rem; /* تقليل حجم العنوان */
+    width: 60vw; /* يزيد العرض قليلًا ليكون مناسبًا */
+    max-width: 400px;
+    padding: 16px;
   }
 
   #user-name,
   #user-age,
   #user-mobile,
   #user-email {
-    font-size: 0.85rem; /* تصغير الخط أكثر */
-    padding: 8px;
+    padding: 10px;
+  }
+}
+
+/* 📱 تحسين التصميم للأجهزة الصغيرة جدًا (الموبايلات العادية) */
+@media (max-width: 480px) {
+  #form-container {
+    width: 85vw; /* توسيع النموذج ليغطي أكبر جزء مناسب */
+    max-width: 350px;
+    padding: 14px;
+    border-radius: 8px;
+  }
+
+  #user-name,
+  #user-age,
+  #user-mobile,
+  #user-email {
+    font-size: 0.9rem;
+    padding: 10px;
   }
 
   #payment-button {
     font-size: 0.9rem;
-    padding: 10px;
     height: 50px;
+  }
+}
+
+/* 📱 دعم للأجهزة الصغيرة جدًا مثل iPhone SE */
+@media (max-width: 360px) {
+  #form-container {
+    width: 95vw; /* استخدام معظم عرض الشاشة */
+    max-width: 320px;
+    padding: 12px;
+  }
+
+  #user-name,
+  #user-age,
+  #user-mobile,
+  #user-email {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  #payment-button {
+    font-size: 0.85rem;
+    height: 45px;
   }
 }
